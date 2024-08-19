@@ -1,9 +1,22 @@
-import './App.css'
+import { useState } from 'react';
+
+import { EventList, Navbar } from './components';
+
+import './App.css';
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleNavbarSearch = (search: string) => {
+    console.log(`Navbar search: ${search}`)
+    searchTerm !== search && setSearchTerm(search)
+  }
+
   return (
     <>
-      <h1>Ticket Master</h1>
+      <Navbar onSearch={handleNavbarSearch} />
+
+      <EventList searchTerm={searchTerm} />
     </>
   )
 }

@@ -1,11 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { DetailView, HomeView } from "../views";
+import { DetailView, HomeView, NotFoundView } from "../views";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeView />,
+    errorElement: <NotFoundView />,
   },
   {
     path: "/detail",

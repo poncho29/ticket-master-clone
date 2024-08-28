@@ -1,14 +1,13 @@
+import { useEvents } from "../../../hooks";
+
 import { EventItem } from "../EventItem";
-
-import data from "../../../data/events.json";
-
-const { _embedded: { events } } = data;
 
 interface Props {
   searchTerm: string;
 }
 
 export const EventList = ({ searchTerm }: Props) => {
+  const { events } = useEvents();
 
   const renderEvents = () => {
     let eventsFiltered = events;
@@ -37,8 +36,6 @@ export const EventList = ({ searchTerm }: Props) => {
 
   return (
     <div>
-      Eventos
-
       {renderEvents()}
     </div>
   )

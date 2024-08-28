@@ -1,6 +1,8 @@
 import { useState } from "react";
 import type { ChangeEvent, KeyboardEvent } from "react";
 
+import styles from './Navbar.module.css';
+
 interface Props {
   onSearch: (search: string) => void;
 }
@@ -21,12 +23,13 @@ export const Navbar = ({ onSearch }: Props) => {
   }
 
   return (
-    <div>
+    <div className={styles.searchContainer}>
       <p>Eventos</p>
 
       <input
         type="search"
         placeholder='Busca un evento'
+        className={styles.searchInput}
         value={search}
         onChange={handleInputChange}
         onKeyDown={handleInputKeyDown}

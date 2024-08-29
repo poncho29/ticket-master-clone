@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useEvents } from "../../../hooks";
 
 import { EventItem } from "../EventItem";
@@ -7,6 +8,8 @@ interface Props {
 }
 
 export const EventList = ({ searchTerm }: Props) => {
+  const navigate = useNavigate();
+
   const { events } = useEvents();
 
   const renderEvents = () => {
@@ -31,7 +34,7 @@ export const EventList = ({ searchTerm }: Props) => {
   }
 
   const handleEventItemClick = (id: string) => {
-    console.log(`Event ${id} clicked`);
+    navigate(`/detail/${id}`);
   }
 
   return (

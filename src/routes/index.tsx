@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { DetailView, HomeView, NotFoundView } from "../views";
+import { DetailView, HomeView, NotFoundView, ProfileView } from "../views";
 
 const router = createBrowserRouter([
   {
@@ -9,8 +9,22 @@ const router = createBrowserRouter([
     errorElement: <NotFoundView />,
   },
   {
-    path: "/detail",
+    path: "/detail/:id",
     element: <DetailView />,
+  },
+  {
+    path: "/profile",
+    element: <ProfileView />,
+    children: [
+      {
+        path: "my-info",
+        element: <div>My Info</div>,
+      },
+      {
+        path: "liked-events",
+        element: <div>Liked Events</div>,
+      }
+    ]
   },
 ]);
 

@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { useEvents } from "../../../hooks";
 
 import { EventItem } from "../EventItem";
 
+import { Event } from "../../../interfaces";
+
 interface Props {
+  events: Event[];
   searchTerm: string;
 }
 
-export const EventList = ({ searchTerm }: Props) => {
+export const EventList = ({ events, searchTerm }: Props) => {
   const navigate = useNavigate();
-
-  const { events } = useEvents();
 
   const renderEvents = () => {
     let eventsFiltered = events;
@@ -26,7 +26,7 @@ export const EventList = ({ searchTerm }: Props) => {
         key={`event-item-${event.id}`}
         id={event.id}
         name={event.name}
-        info={event?.info || ""}
+        info={""}
         image={event.images[0].url}
         onEventClick={handleEventItemClick}
       />
